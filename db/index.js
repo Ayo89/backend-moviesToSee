@@ -15,11 +15,19 @@ const connection = async () => {
   }
 }
 
-
+const sync = async () => {
+  try {
+    await sequelize.sync()
+    console.log('Sync OK.');
+  } catch (error) {
+    throw new Error('Cannot sync', error);
+  }
+}
 
 
 
 module.exports = {
   sequelize,
-  connection
+  connection,
+  sync
 }
